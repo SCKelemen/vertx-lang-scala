@@ -15,6 +15,9 @@
 @if{className == 'Vertx'}
 @includeNamed{'extensions/Vertx.templ'}
 @end{}
+@if{className == 'EventBus'}
+@includeNamed{'extensions/EventBus.templ'}
+@end{}
 \n
 @code{var cached_method_counter = 0}
 @foreach{method : cacheReturnMethods}

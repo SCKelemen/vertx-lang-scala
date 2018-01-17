@@ -1,0 +1,80 @@
+  import io.vertx.core.eventbus.MessageCodec\n
+  \n
+  /**\n
+   * Register a message codec.\n
+   * <p>\n
+   * You can register a message codec if you want to send any non standard message across the event bus.\n
+   * E.g. you might want to send POJOs directly across the event bus.\n
+   * <p>\n
+   * To use a message codec for a send, you should specify it in the delivery options.\n
+   *\n
+   * @param codec  the message codec to register\n
+   * @return a reference to this, so the API can be used fluently\n
+   */\n
+  def registerCodec(codec: MessageCodec[_,_]): EventBus  = {\n
+    asJava.asInstanceOf[JEventBus].registerCodec(codec)\n
+    this\n
+  }\n
+\n
+  /**\n
+   * Unregister a message codec.\n
+   * <p>\n
+   * @param name  the name of the codec\n
+   * @return a reference to this, so the API can be used fluently\n
+   */\n
+  def unregisterCodec(name: String): EventBus  = {\n
+    asJava.asInstanceOf[JEventBus].unregisterCodec(name)\n
+    this\n
+  }\n
+\n
+  /**\n
+   * Register a default message codec.\n
+   * <p>\n
+   * You can register a message codec if you want to send any non standard message across the event bus.\n
+   * E.g. you might want to send POJOs directly across the event bus.\n
+   * <p>\n
+   * Default message codecs will be used to serialise any messages of the specified type on the event bus without\n
+   * the codec having to be specified in the delivery options.\n
+   *\n
+   * @param clazz  the class for which to use this codec\n
+   * @param codec  the message codec to register\n
+   * @return a reference to this, so the API can be used fluently\n
+   */\n
+  def registerDefaultCodec[T](clazz:Class[T] , codec: MessageCodec[T, _]): EventBus  = {\n
+    asJava.asInstanceOf[JEventBus].registerDefaultCodec(clazz, codec)\n
+    this\n
+  }\n
+\n
+  /**\n
+   * Unregister a default message codec.\n
+   * <p>\n
+   * @param clazz  the class for which the codec was registered\n
+   * @return a reference to this, so the API can be used fluently\n
+   */\n
+  def unregisterDefaultCodec(clazz: Class[_]): EventBus  = {\n
+    asJava.asInstanceOf[JEventBus].unregisterDefaultCodec(clazz)\n
+    this\n
+  }\n
+\n
+  /**\n
+   * Add an interceptor that will be called whenever a message is sent from Vert.x\n
+   *\n
+   * @param interceptor  the interceptor\n
+   * @return a reference to this, so the API can be used fluently\n
+   */\n
+  def addInterceptor(interceptor: Handler[JSendContext[_]]): EventBus = {\n
+    asJava.asInstanceOf[JEventBus].addInterceptor(interceptor)\n
+    this\n
+  }\n
+\n
+  /**\n
+   * Remove an interceptor\n
+   *\n
+   * @param interceptor  the interceptor\n
+   * @return a reference to this, so the API can be used fluently\n
+   */\n
+  def removeInterceptor(interceptor: Handler[JSendContext[_]]): EventBus = {\n
+    asJava.asInstanceOf[JEventBus].removeInterceptor(interceptor)\n
+    this\n
+  }\n
+\n
