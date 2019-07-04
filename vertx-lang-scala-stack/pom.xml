@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <groupId>io.vertx</groupId>
-    <artifactId>vertx-lang-scala-parent_2.12</artifactId>
+    <artifactId>vertx-lang-scala-parent_2.13</artifactId>
     <version>3.8.0-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>vertx-lang-scala-stack_2.12</artifactId>
+  <artifactId>vertx-lang-scala-stack_2.13</artifactId>
 
   <packaging>pom</packaging>
 
@@ -32,7 +32,7 @@
   <dependencies>
     <dependency>
       <groupId>io.vertx</groupId>
-      <artifactId>vertx-lang-scala_2.12</artifactId>
+      <artifactId>vertx-lang-scala_2.13</artifactId>
       <version>${stack.version}</version>
     </dependency>
 
@@ -68,7 +68,6 @@
               <arg>-feature</arg>
               <arg>-deprecation</arg>
               <arg>-explaintypes</arg>
-              <arg>-Ywarn-unused-import:false</arg>
               <arg>-Xlint:_</arg>
             </args>
           </configuration>
