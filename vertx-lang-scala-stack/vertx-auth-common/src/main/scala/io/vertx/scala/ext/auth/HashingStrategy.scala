@@ -55,7 +55,7 @@ class HashingStrategy(private val _asJava: Object) {
    * @return the hashed string
    */
   def hash (id: String, params: scala.collection.mutable.Map[String, String], salt: String, password: String): String = {
-    asJava.asInstanceOf[JHashingStrategy].hash(id.asInstanceOf[java.lang.String], params.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, salt.asInstanceOf[java.lang.String], password.asInstanceOf[java.lang.String]).asInstanceOf[String]
+    asJava.asInstanceOf[JHashingStrategy].hash(id.asInstanceOf[java.lang.String], params.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, salt.asInstanceOf[java.lang.String], password.asInstanceOf[java.lang.String]).asInstanceOf[String]
   }
 
   /**

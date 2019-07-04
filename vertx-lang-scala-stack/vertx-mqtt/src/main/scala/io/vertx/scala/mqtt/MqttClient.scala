@@ -178,7 +178,7 @@ class MqttClient(private val _asJava: Object) {
    */
   
   def subscribe(topics: scala.collection.mutable.Map[String, Int]): MqttClient = {
-    asJava.asInstanceOf[JMqttClient].subscribe(topics.mapValues(x => x.asInstanceOf[java.lang.Integer]).asJava)
+    asJava.asInstanceOf[JMqttClient].subscribe(topics.mapValues(x => x.asInstanceOf[java.lang.Integer]).toMap.asJava)
     this
   }
 
@@ -189,7 +189,7 @@ class MqttClient(private val _asJava: Object) {
    */
   
   def subscribe(topics: scala.collection.mutable.Map[String, Int], subscribeSentHandler: Handler[AsyncResult[Int]]): MqttClient = {
-    asJava.asInstanceOf[JMqttClient].subscribe(topics.mapValues(x => x.asInstanceOf[java.lang.Integer]).asJava, (if (subscribeSentHandler == null) null else new io.vertx.core.Handler[AsyncResult[java.lang.Integer]]{def handle(x: AsyncResult[java.lang.Integer]) {subscribeSentHandler.handle(AsyncResultWrapper[java.lang.Integer, Int](x, a => a.asInstanceOf[Int]))}}))
+    asJava.asInstanceOf[JMqttClient].subscribe(topics.mapValues(x => x.asInstanceOf[java.lang.Integer]).toMap.asJava, (if (subscribeSentHandler == null) null else new io.vertx.core.Handler[AsyncResult[java.lang.Integer]]{def handle(x: AsyncResult[java.lang.Integer]) {subscribeSentHandler.handle(AsyncResultWrapper[java.lang.Integer, Int](x, a => a.asInstanceOf[Int]))}}))
     this
   }
 
@@ -340,7 +340,7 @@ class MqttClient(private val _asJava: Object) {
   def subscribeFuture (topics: scala.collection.mutable.Map[String, Int]): scala.concurrent.Future[Int] = {
     //TODO: https://github.com/vert-x3/vertx-codegen/issues/111
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.Integer, Int](x => x.asInstanceOf[Int])
-    asJava.asInstanceOf[JMqttClient].subscribe(topics.mapValues(x => x.asInstanceOf[java.lang.Integer]).asJava, promiseAndHandler._1)
+    asJava.asInstanceOf[JMqttClient].subscribe(topics.mapValues(x => x.asInstanceOf[java.lang.Integer]).toMap.asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 

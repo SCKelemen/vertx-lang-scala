@@ -29,17 +29,17 @@ import scala.collection.JavaConverters._
 class DataObjectWithMaps(private val _asJava: JDataObjectWithMaps) {
   def asJava = _asJava
   def setBooleanValues(value: Map[String, Boolean]) = {
-    asJava.setBooleanValues(value.mapValues(Boolean.box).asJava)
+    asJava.setBooleanValues(value.mapValues(Boolean.box).toMap.asJava)
     this
   }
 
   def setDataObjectValues(value: Map[String, TestDataObject]) = {
-    asJava.setDataObjectValues(value.mapValues(_.asJava).asJava)
+    asJava.setDataObjectValues(value.mapValues(_.asJava).toMap.asJava)
     this
   }
 
   def setDoubleValues(value: Map[String, Double]) = {
-    asJava.setDoubleValues(value.mapValues(Double.box).asJava)
+    asJava.setDoubleValues(value.mapValues(Double.box).toMap.asJava)
     this
   }
 
@@ -49,7 +49,7 @@ class DataObjectWithMaps(private val _asJava: JDataObjectWithMaps) {
   }
 
   def setFloatValues(value: Map[String, Float]) = {
-    asJava.setFloatValues(value.mapValues(Float.box).asJava)
+    asJava.setFloatValues(value.mapValues(Float.box).toMap.asJava)
     this
   }
 
@@ -64,7 +64,7 @@ class DataObjectWithMaps(private val _asJava: JDataObjectWithMaps) {
   }
 
   def setIntegerValues(value: Map[String, Int]) = {
-    asJava.setIntegerValues(value.mapValues(Int.box).asJava)
+    asJava.setIntegerValues(value.mapValues(Int.box).toMap.asJava)
     this
   }
 
@@ -79,12 +79,12 @@ class DataObjectWithMaps(private val _asJava: JDataObjectWithMaps) {
   }
 
   def setLongValues(value: Map[String, Long]) = {
-    asJava.setLongValues(value.mapValues(Long.box).asJava)
+    asJava.setLongValues(value.mapValues(Long.box).toMap.asJava)
     this
   }
 
   def setShortValues(value: Map[String, Short]) = {
-    asJava.setShortValues(value.mapValues(Short.box).asJava)
+    asJava.setShortValues(value.mapValues(Short.box).toMap.asJava)
     this
   }
 

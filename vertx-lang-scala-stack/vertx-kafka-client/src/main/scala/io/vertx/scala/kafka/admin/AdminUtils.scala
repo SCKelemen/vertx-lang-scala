@@ -58,7 +58,7 @@ class AdminUtils(private val _asJava: Object) {
    * @param completionHandler vert.x callback
    */
   def createTopic (topicName: String, partitionCount: Int, replicationFactor: Int, topicConfig: scala.collection.mutable.Map[String, String], completionHandler: Handler[AsyncResult[Unit]]): Unit = {
-    asJava.asInstanceOf[JAdminUtils].createTopic(topicName.asInstanceOf[java.lang.String], partitionCount.asInstanceOf[java.lang.Integer], replicationFactor.asInstanceOf[java.lang.Integer], topicConfig.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, (if (completionHandler == null) null else new io.vertx.core.Handler[AsyncResult[Void]]{def handle(x: AsyncResult[Void]) {completionHandler.handle(AsyncResultWrapper[Void, Unit](x, a => a))}}))
+    asJava.asInstanceOf[JAdminUtils].createTopic(topicName.asInstanceOf[java.lang.String], partitionCount.asInstanceOf[java.lang.Integer], replicationFactor.asInstanceOf[java.lang.Integer], topicConfig.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, (if (completionHandler == null) null else new io.vertx.core.Handler[AsyncResult[Void]]{def handle(x: AsyncResult[Void]) {completionHandler.handle(AsyncResultWrapper[Void, Unit](x, a => a))}}))
   }
 
   /**
@@ -84,7 +84,7 @@ class AdminUtils(private val _asJava: Object) {
    * @param completionHandler vert.x callback
    */
   def changeTopicConfig (topicName: String, topicConfig: scala.collection.mutable.Map[String, String], completionHandler: Handler[AsyncResult[Unit]]): Unit = {
-    asJava.asInstanceOf[JAdminUtils].changeTopicConfig(topicName.asInstanceOf[java.lang.String], topicConfig.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, (if (completionHandler == null) null else new io.vertx.core.Handler[AsyncResult[Void]]{def handle(x: AsyncResult[Void]) {completionHandler.handle(AsyncResultWrapper[Void, Unit](x, a => a))}}))
+    asJava.asInstanceOf[JAdminUtils].changeTopicConfig(topicName.asInstanceOf[java.lang.String], topicConfig.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, (if (completionHandler == null) null else new io.vertx.core.Handler[AsyncResult[Void]]{def handle(x: AsyncResult[Void]) {completionHandler.handle(AsyncResultWrapper[Void, Unit](x, a => a))}}))
   }
 
   /**
@@ -112,7 +112,7 @@ class AdminUtils(private val _asJava: Object) {
   def createTopicFuture (topicName: String, partitionCount: Int, replicationFactor: Int, topicConfig: scala.collection.mutable.Map[String, String]): scala.concurrent.Future[Unit] = {
     //TODO: https://github.com/vert-x3/vertx-codegen/issues/111
     val promiseAndHandler = handlerForAsyncResultWithConversion[Void, Unit](x => x)
-    asJava.asInstanceOf[JAdminUtils].createTopic(topicName.asInstanceOf[java.lang.String], partitionCount.asInstanceOf[java.lang.Integer], replicationFactor.asInstanceOf[java.lang.Integer], topicConfig.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, promiseAndHandler._1)
+    asJava.asInstanceOf[JAdminUtils].createTopic(topicName.asInstanceOf[java.lang.String], partitionCount.asInstanceOf[java.lang.Integer], replicationFactor.asInstanceOf[java.lang.Integer], topicConfig.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -142,7 +142,7 @@ class AdminUtils(private val _asJava: Object) {
   def changeTopicConfigFuture (topicName: String, topicConfig: scala.collection.mutable.Map[String, String]): scala.concurrent.Future[Unit] = {
     //TODO: https://github.com/vert-x3/vertx-codegen/issues/111
     val promiseAndHandler = handlerForAsyncResultWithConversion[Void, Unit](x => x)
-    asJava.asInstanceOf[JAdminUtils].changeTopicConfig(topicName.asInstanceOf[java.lang.String], topicConfig.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, promiseAndHandler._1)
+    asJava.asInstanceOf[JAdminUtils].changeTopicConfig(topicName.asInstanceOf[java.lang.String], topicConfig.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 

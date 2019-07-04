@@ -52,9 +52,9 @@ ${typeHelper.renderDoc(type, "   *", property.doc)}
     <#elseIf property.map>
         <#lt>${"  "}<#if !property.declared && superTypes?hasContent >override </#if>def ${property.setterMethod}(value: Map[String, ${typeHelper.toScalaType(property.type, false)}]) = {
       <#if property.type.kind == CLASS_PRIMITIVE || property.type.kind == CLASS_BOXED_PRIMITIVE>
-        <#lt>${"    "}asJava.${property.setterMethod}(value.mapValues(${typeHelper.toScalaType(property.type, false)}.box).asJava)
+        <#lt>${"    "}asJava.${property.setterMethod}(value.mapValues(${typeHelper.toScalaType(property.type, false)}.box).toMap.asJava)
       <#elseIf property.type.kind == CLASS_DATA_OBJECT>
-        <#lt>${"    "}asJava.${property.setterMethod}(value.mapValues(${typeHelper.toJavaWithConversion('_', property.type)}).asJava)
+        <#lt>${"    "}asJava.${property.setterMethod}(value.mapValues(${typeHelper.toJavaWithConversion('_', property.type)}).toMap.asJava)
       <#else>
         <#lt>${"    "}asJava.${property.setterMethod}(value.asJava)
       </#if>

@@ -42,7 +42,7 @@ class StompClientConnection(private val _asJava: Object) {
    */
   
   def send(headers: scala.collection.mutable.Map[String, String], body: io.vertx.core.buffer.Buffer): StompClientConnection = {
-    asJava.asInstanceOf[JStompClientConnection].send(headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, body)
+    asJava.asInstanceOf[JStompClientConnection].send(headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, body)
     this
   }
 
@@ -54,7 +54,7 @@ class StompClientConnection(private val _asJava: Object) {
    */
   
   def send(headers: scala.collection.mutable.Map[String, String], body: io.vertx.core.buffer.Buffer, receiptHandler: Handler[Frame]): StompClientConnection = {
-    asJava.asInstanceOf[JStompClientConnection].send(headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, body, (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}}))
+    asJava.asInstanceOf[JStompClientConnection].send(headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, body, (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}}))
     this
   }
 
@@ -110,7 +110,7 @@ class StompClientConnection(private val _asJava: Object) {
    */
   
   def send(destination: String, headers: scala.collection.mutable.Map[String, String], body: io.vertx.core.buffer.Buffer): StompClientConnection = {
-    asJava.asInstanceOf[JStompClientConnection].send(destination.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, body)
+    asJava.asInstanceOf[JStompClientConnection].send(destination.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, body)
     this
   }
 
@@ -123,7 +123,7 @@ class StompClientConnection(private val _asJava: Object) {
    */
   
   def send(destination: String, headers: scala.collection.mutable.Map[String, String], body: io.vertx.core.buffer.Buffer, receiptHandler: Handler[Frame]): StompClientConnection = {
-    asJava.asInstanceOf[JStompClientConnection].send(destination.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, body, (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}}))
+    asJava.asInstanceOf[JStompClientConnection].send(destination.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, body, (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}}))
     this
   }
 
@@ -158,7 +158,7 @@ class StompClientConnection(private val _asJava: Object) {
    */
   
   def unsubscribe(destination: String, headers: scala.collection.mutable.Map[String, String]): StompClientConnection = {
-    asJava.asInstanceOf[JStompClientConnection].unsubscribe(destination.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava)
+    asJava.asInstanceOf[JStompClientConnection].unsubscribe(destination.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava)
     this
   }
 
@@ -171,7 +171,7 @@ class StompClientConnection(private val _asJava: Object) {
    */
   
   def unsubscribe(destination: String, headers: scala.collection.mutable.Map[String, String], receiptHandler: Handler[Frame]): StompClientConnection = {
-    asJava.asInstanceOf[JStompClientConnection].unsubscribe(destination.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}}))
+    asJava.asInstanceOf[JStompClientConnection].unsubscribe(destination.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}}))
     this
   }
 
@@ -246,7 +246,7 @@ class StompClientConnection(private val _asJava: Object) {
    */
   
   def beginTX(id: String, headers: scala.collection.mutable.Map[String, String]): StompClientConnection = {
-    asJava.asInstanceOf[JStompClientConnection].beginTX(id.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava)
+    asJava.asInstanceOf[JStompClientConnection].beginTX(id.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava)
     this
   }
 
@@ -258,7 +258,7 @@ class StompClientConnection(private val _asJava: Object) {
    */
   
   def beginTX(id: String, headers: scala.collection.mutable.Map[String, String], receiptHandler: Handler[Frame]): StompClientConnection = {
-    asJava.asInstanceOf[JStompClientConnection].beginTX(id.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}}))
+    asJava.asInstanceOf[JStompClientConnection].beginTX(id.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}}))
     this
   }
 
@@ -290,7 +290,7 @@ class StompClientConnection(private val _asJava: Object) {
    */
   
   def commit(id: String, headers: scala.collection.mutable.Map[String, String]): StompClientConnection = {
-    asJava.asInstanceOf[JStompClientConnection].commit(id.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava)
+    asJava.asInstanceOf[JStompClientConnection].commit(id.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava)
     this
   }
 
@@ -302,7 +302,7 @@ class StompClientConnection(private val _asJava: Object) {
    */
   
   def commit(id: String, headers: scala.collection.mutable.Map[String, String], receiptHandler: Handler[Frame]): StompClientConnection = {
-    asJava.asInstanceOf[JStompClientConnection].commit(id.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}}))
+    asJava.asInstanceOf[JStompClientConnection].commit(id.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}}))
     this
   }
 
@@ -334,7 +334,7 @@ class StompClientConnection(private val _asJava: Object) {
    */
   
   def abort(id: String, headers: scala.collection.mutable.Map[String, String]): StompClientConnection = {
-    asJava.asInstanceOf[JStompClientConnection].abort(id.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava)
+    asJava.asInstanceOf[JStompClientConnection].abort(id.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava)
     this
   }
 
@@ -346,7 +346,7 @@ class StompClientConnection(private val _asJava: Object) {
    */
   
   def abort(id: String, headers: scala.collection.mutable.Map[String, String], receiptHandler: Handler[Frame]): StompClientConnection = {
-    asJava.asInstanceOf[JStompClientConnection].abort(id.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}}))
+    asJava.asInstanceOf[JStompClientConnection].abort(id.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}}))
     this
   }
 
@@ -583,7 +583,7 @@ class StompClientConnection(private val _asJava: Object) {
    * @return the subscription id, which can either be the destination or the id set in the headers.
    */
   def subscribe (destination: String, headers: scala.collection.mutable.Map[String, String], handler: Handler[Frame]): String = {
-    asJava.asInstanceOf[JStompClientConnection].subscribe(destination.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, (if (handler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {handler.handle(Frame(x))}})).asInstanceOf[String]
+    asJava.asInstanceOf[JStompClientConnection].subscribe(destination.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, (if (handler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {handler.handle(Frame(x))}})).asInstanceOf[String]
   }
 
   /**
@@ -594,7 +594,7 @@ class StompClientConnection(private val _asJava: Object) {
    * @return the subscription id, which can either be the destination or the id set in the headers.
    */
   def subscribe (destination: String, headers: scala.collection.mutable.Map[String, String], handler: Handler[Frame], receiptHandler: Handler[Frame]): String = {
-    asJava.asInstanceOf[JStompClientConnection].subscribe(destination.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, (if (handler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {handler.handle(Frame(x))}}), (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}})).asInstanceOf[String]
+    asJava.asInstanceOf[JStompClientConnection].subscribe(destination.asInstanceOf[java.lang.String], headers.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, (if (handler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {handler.handle(Frame(x))}}), (if (receiptHandler == null) null else new io.vertx.core.Handler[JFrame]{def handle(x: JFrame) {receiptHandler.handle(Frame(x))}})).asInstanceOf[String]
   }
 
   /**

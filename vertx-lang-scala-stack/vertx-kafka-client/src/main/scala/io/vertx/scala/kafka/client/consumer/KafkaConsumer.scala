@@ -940,7 +940,7 @@ object KafkaConsumer {
    * @return an instance of the KafkaConsumer
    */
   def create[K: TypeTag, V: TypeTag](vertx: Vertx,config: scala.collection.mutable.Map[String, String]): KafkaConsumer[K, V] = {
-    KafkaConsumer[K, V](JKafkaConsumer.create[Object, Object](vertx.asJava.asInstanceOf[JVertx], config.mapValues(x => x.asInstanceOf[java.lang.String]).asJava))
+    KafkaConsumer[K, V](JKafkaConsumer.create[Object, Object](vertx.asJava.asInstanceOf[JVertx], config.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava))
   }
 
   /**
@@ -951,7 +951,7 @@ object KafkaConsumer {
    * @return an instance of the KafkaConsumer
    */
   def create[K: TypeTag, V: TypeTag](vertx: Vertx,config: scala.collection.mutable.Map[String, String],keyType: Class[K],valueType: Class[V]): KafkaConsumer[K, V] = {
-    KafkaConsumer[K, V](JKafkaConsumer.create[Object, Object](vertx.asJava.asInstanceOf[JVertx], config.mapValues(x => x.asInstanceOf[java.lang.String]).asJava, toJavaClass(keyType), toJavaClass(valueType)))
+    KafkaConsumer[K, V](JKafkaConsumer.create[Object, Object](vertx.asJava.asInstanceOf[JVertx], config.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava, toJavaClass(keyType), toJavaClass(valueType)))
   }
 
 }

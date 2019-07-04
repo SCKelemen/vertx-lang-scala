@@ -5,12 +5,13 @@ import io.vertx.lang.scala.json.Json
 import io.vertx.lang.scala.json.Json._
 import io.vertx.scala.codegen.testmodel.{CollectionTCK, RefedInterface1, TestDataObject}
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+import org.scalatestplus.junit.JUnitRunner
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 import scala.concurrent.ExecutionContext
+import collection.JavaConverters._
 
 @RunWith(classOf[JUnitRunner])
 class CollectionTCKTest extends FlatSpec with Matchers {
@@ -178,7 +179,7 @@ class CollectionTCKTest extends FlatSpec with Matchers {
 
   "testSetVertxGenReturn" should "work" in {
     val set = obj.methodWithSetVertxGenReturn()
-    assert(2 == set.size)
+    assert(4 == set.size)
     assert(set.map(_.getString()).size == 2)
   }
 
@@ -429,7 +430,6 @@ class CollectionTCKTest extends FlatSpec with Matchers {
   }
 
   "testMethodWithHandlerAsyncResultSetDataObject" should "work" in {
-    import collection.JavaConversions._
     var checkVar = 0
     exec1(w => obj.methodWithHandlerAsyncResultSetDataObjectFuture().foreach(it => {
       val coll = it

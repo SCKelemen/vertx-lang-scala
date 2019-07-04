@@ -4,7 +4,7 @@ import io.vertx.codegen.testmodel.{RefedInterface1Impl, _}
 import io.vertx.lang.scala.json.{Json, JsonArray, JsonObject}
 import io.vertx.scala.codegen.testmodel.{GenericsTCK, RefedInterface1, TestDataObject}
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+import org.scalatestplus.junit.JUnitRunner
 import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
 import scala.concurrent.ExecutionContext

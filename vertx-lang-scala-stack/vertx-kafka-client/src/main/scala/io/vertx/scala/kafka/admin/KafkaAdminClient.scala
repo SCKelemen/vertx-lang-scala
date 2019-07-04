@@ -123,7 +123,7 @@ object KafkaAdminClient {
    * @return an instance of the KafkaAdminClient
    */
   def create(vertx: Vertx,config: scala.collection.mutable.Map[String, String]): KafkaAdminClient = {
-    KafkaAdminClient(JKafkaAdminClient.create(vertx.asJava.asInstanceOf[JVertx], config.mapValues(x => x.asInstanceOf[java.lang.String]).asJava))
+    KafkaAdminClient(JKafkaAdminClient.create(vertx.asJava.asInstanceOf[JVertx], config.mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava))
   }
 
 }

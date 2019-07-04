@@ -7,7 +7,7 @@ import io.vertx.lang.scala.json.{Json, JsonObject}
 import io.vertx.scala.codegen.testmodel.TestDataObject
 import org.junit.runner.RunWith
 import org.scalatest.{FlatSpec, Matchers}
-import org.scalatest.junit.JUnitRunner
+import org.scalatestplus.junit.JUnitRunner
 
 /**
   * @author <a href="mailto:jochen@codepitbull.de">Jochen Mader</a

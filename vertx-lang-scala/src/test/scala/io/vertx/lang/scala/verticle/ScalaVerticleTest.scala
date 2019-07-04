@@ -2,7 +2,7 @@ package io.vertx.lang.scala.verticle
 
 import io.vertx.scala.core.Vertx
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+import org.scalatestplus.junit.JUnitRunner
 import org.scalatest.{AsyncFlatSpec, Matchers}
 import io.vertx.lang.scala.ScalaVerticle._
 import io.vertx.lang.scala.{ScalaVerticle, VertxExecutionContext}

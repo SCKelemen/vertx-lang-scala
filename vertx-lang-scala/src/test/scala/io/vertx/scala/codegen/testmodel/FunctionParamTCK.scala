@@ -136,7 +136,7 @@ class FunctionParamTCK(private val _asJava: Object) {
 
 
   def methodWithMapReturn (func: String => scala.collection.mutable.Map[String, String]): String = {
-    asJava.asInstanceOf[JFunctionParamTCK].methodWithMapReturn({x: java.lang.String => func(x.asInstanceOf[String]).mapValues(x => x.asInstanceOf[java.lang.String]).asJava}).asInstanceOf[String]
+    asJava.asInstanceOf[JFunctionParamTCK].methodWithMapReturn({x: java.lang.String => func(x.asInstanceOf[String]).mapValues(x => x.asInstanceOf[java.lang.String]).toMap.asJava}).asInstanceOf[String]
   }
 
 

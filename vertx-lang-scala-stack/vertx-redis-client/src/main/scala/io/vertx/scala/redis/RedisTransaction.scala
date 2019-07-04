@@ -2065,7 +2065,7 @@ class RedisTransaction(private val _asJava: Object) {
    */
   
   def zaddMany(key: String, members: scala.collection.mutable.Map[String, Double], handler: Handler[AsyncResult[String]]): RedisTransaction = {
-    asJava.asInstanceOf[JRedisTransaction].zaddMany(key.asInstanceOf[java.lang.String], members.mapValues(x => x.asInstanceOf[java.lang.Double]).asJava, (if (handler == null) null else new io.vertx.core.Handler[AsyncResult[java.lang.String]]{def handle(x: AsyncResult[java.lang.String]) {handler.handle(AsyncResultWrapper[java.lang.String, String](x, a => a.asInstanceOf[String]))}}))
+    asJava.asInstanceOf[JRedisTransaction].zaddMany(key.asInstanceOf[java.lang.String], members.mapValues(x => x.asInstanceOf[java.lang.Double]).toMap.asJava, (if (handler == null) null else new io.vertx.core.Handler[AsyncResult[java.lang.String]]{def handle(x: AsyncResult[java.lang.String]) {handler.handle(AsyncResultWrapper[java.lang.String, String](x, a => a.asInstanceOf[String]))}}))
     this
   }
 
@@ -2123,7 +2123,7 @@ class RedisTransaction(private val _asJava: Object) {
    */
   
   def zinterstoreWeighed(destkey: String, sets: scala.collection.mutable.Map[String, Double], options: io.vertx.redis.op.AggregateOptions, handler: Handler[AsyncResult[String]]): RedisTransaction = {
-    asJava.asInstanceOf[JRedisTransaction].zinterstoreWeighed(destkey.asInstanceOf[java.lang.String], sets.mapValues(x => x.asInstanceOf[java.lang.Double]).asJava, options, (if (handler == null) null else new io.vertx.core.Handler[AsyncResult[java.lang.String]]{def handle(x: AsyncResult[java.lang.String]) {handler.handle(AsyncResultWrapper[java.lang.String, String](x, a => a.asInstanceOf[String]))}}))
+    asJava.asInstanceOf[JRedisTransaction].zinterstoreWeighed(destkey.asInstanceOf[java.lang.String], sets.mapValues(x => x.asInstanceOf[java.lang.Double]).toMap.asJava, options, (if (handler == null) null else new io.vertx.core.Handler[AsyncResult[java.lang.String]]{def handle(x: AsyncResult[java.lang.String]) {handler.handle(AsyncResultWrapper[java.lang.String, String](x, a => a.asInstanceOf[String]))}}))
     this
   }
 
@@ -2339,7 +2339,7 @@ class RedisTransaction(private val _asJava: Object) {
    */
   
   def zunionstoreWeighed(key: String, sets: scala.collection.mutable.Map[String, Double], options: io.vertx.redis.op.AggregateOptions, handler: Handler[AsyncResult[String]]): RedisTransaction = {
-    asJava.asInstanceOf[JRedisTransaction].zunionstoreWeighed(key.asInstanceOf[java.lang.String], sets.mapValues(x => x.asInstanceOf[java.lang.Double]).asJava, options, (if (handler == null) null else new io.vertx.core.Handler[AsyncResult[java.lang.String]]{def handle(x: AsyncResult[java.lang.String]) {handler.handle(AsyncResultWrapper[java.lang.String, String](x, a => a.asInstanceOf[String]))}}))
+    asJava.asInstanceOf[JRedisTransaction].zunionstoreWeighed(key.asInstanceOf[java.lang.String], sets.mapValues(x => x.asInstanceOf[java.lang.Double]).toMap.asJava, options, (if (handler == null) null else new io.vertx.core.Handler[AsyncResult[java.lang.String]]{def handle(x: AsyncResult[java.lang.String]) {handler.handle(AsyncResultWrapper[java.lang.String, String](x, a => a.asInstanceOf[String]))}}))
     this
   }
 
@@ -4554,7 +4554,7 @@ class RedisTransaction(private val _asJava: Object) {
   def zaddManyFuture (key: String, members: scala.collection.mutable.Map[String, Double]): scala.concurrent.Future[String] = {
     //TODO: https://github.com/vert-x3/vertx-codegen/issues/111
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.String, String](x => x.asInstanceOf[String])
-    asJava.asInstanceOf[JRedisTransaction].zaddMany(key.asInstanceOf[java.lang.String], members.mapValues(x => x.asInstanceOf[java.lang.Double]).asJava, promiseAndHandler._1)
+    asJava.asInstanceOf[JRedisTransaction].zaddMany(key.asInstanceOf[java.lang.String], members.mapValues(x => x.asInstanceOf[java.lang.Double]).toMap.asJava, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -4604,7 +4604,7 @@ class RedisTransaction(private val _asJava: Object) {
   def zinterstoreWeighedFuture (destkey: String, sets: scala.collection.mutable.Map[String, Double], options: io.vertx.redis.op.AggregateOptions): scala.concurrent.Future[String] = {
     //TODO: https://github.com/vert-x3/vertx-codegen/issues/111
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.String, String](x => x.asInstanceOf[String])
-    asJava.asInstanceOf[JRedisTransaction].zinterstoreWeighed(destkey.asInstanceOf[java.lang.String], sets.mapValues(x => x.asInstanceOf[java.lang.Double]).asJava, options, promiseAndHandler._1)
+    asJava.asInstanceOf[JRedisTransaction].zinterstoreWeighed(destkey.asInstanceOf[java.lang.String], sets.mapValues(x => x.asInstanceOf[java.lang.Double]).toMap.asJava, options, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 
@@ -4784,7 +4784,7 @@ class RedisTransaction(private val _asJava: Object) {
   def zunionstoreWeighedFuture (key: String, sets: scala.collection.mutable.Map[String, Double], options: io.vertx.redis.op.AggregateOptions): scala.concurrent.Future[String] = {
     //TODO: https://github.com/vert-x3/vertx-codegen/issues/111
     val promiseAndHandler = handlerForAsyncResultWithConversion[java.lang.String, String](x => x.asInstanceOf[String])
-    asJava.asInstanceOf[JRedisTransaction].zunionstoreWeighed(key.asInstanceOf[java.lang.String], sets.mapValues(x => x.asInstanceOf[java.lang.Double]).asJava, options, promiseAndHandler._1)
+    asJava.asInstanceOf[JRedisTransaction].zunionstoreWeighed(key.asInstanceOf[java.lang.String], sets.mapValues(x => x.asInstanceOf[java.lang.Double]).toMap.asJava, options, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
 

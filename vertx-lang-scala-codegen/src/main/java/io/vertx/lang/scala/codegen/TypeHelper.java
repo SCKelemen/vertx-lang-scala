@@ -354,9 +354,9 @@ public class TypeHelper {
       } else if (type.getKind() == ClassKind.MAP){
         ParameterizedTypeInfo parameterizedType = (ParameterizedTypeInfo)type;
         if(parameterizedType.getArg(1).isNullable() && !doesTypeRequireConversion(parameterizedType.getArg(1))) {
-          ret += ".mapValues{case Some(x) => x;case None => null}";
+          ret += ".mapValues{case Some(x) => x;case None => null}.toMap";
         } else if(doesTypeRequireConversion(parameterizedType.getArg(0))) {
-          ret += ".mapValues(x => "+ toJavaWithConversion("x", parameterizedType.getArg(1), typeParams, methodTypeParams) +")";
+          ret += ".mapValues(x => "+ toJavaWithConversion("x", parameterizedType.getArg(1), typeParams, methodTypeParams) +").toMap";
         }
       }
 
