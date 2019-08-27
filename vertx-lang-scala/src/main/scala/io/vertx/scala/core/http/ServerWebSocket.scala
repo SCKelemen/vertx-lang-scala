@@ -399,6 +399,20 @@ class ServerWebSocket(private val _asJava: Object) extends WebSocketBase {
   }
 
   /**
+   * Returns the status code received when the WebSocket was closed by the other side, otherwise `null`.
+   */
+  override def closeStatusCode (): Short = {
+    asJava.asInstanceOf[JServerWebSocket].closeStatusCode().asInstanceOf[Short]
+  }
+
+  /**
+   * Returns the reason message received when the WebSocket was closed by the other side, otherwise `null`.
+   */
+  override def closeReason (): String = {
+    asJava.asInstanceOf[JServerWebSocket].closeReason().asInstanceOf[String]
+  }
+
+  /**
    * Calls [[io.vertx.scala.core.http.ServerWebSocket#close]]
    */
   override def end (): Unit = {

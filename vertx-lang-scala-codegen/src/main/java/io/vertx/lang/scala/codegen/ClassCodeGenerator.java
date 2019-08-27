@@ -110,6 +110,17 @@ public class ClassCodeGenerator extends Generator<Model> {
       imps.add("io.vertx.lang.scala.ScalaVerticle");
     }
 
+
+    if(type.getName().equals("io.vertx.ext.web.Cookie")) {
+      imps.remove("io.vertx.core.http.{Cookie => JCookie}");
+      imps.remove("io.vertx.scala.core.http.Cookie");
+      imps.add("io.vertx.scala.core.http.{Cookie => SCookie}");
+    }
+
+    if(type.getName().equals("io.vertx.ext.web.RoutingContext")) {
+      imps.remove("io.vertx.core.http.{Cookie => JCookie}");
+    }
+
     return imps;
   }
 

@@ -23,6 +23,7 @@ import io.vertx.core.streams.{ReadStream => JReadStream}
 import io.vertx.core.http.{HttpConnection => JHttpConnection}
 import scala.reflect.runtime.universe._
 import io.vertx.scala.core.streams.ReadStream
+import io.vertx.core.http.{Cookie => JCookie}
 import io.vertx.core.http.{ServerWebSocket => JServerWebSocket}
 import io.vertx.core.http.HttpVersion
 import io.vertx.scala.core.net.NetSocket
@@ -445,6 +446,21 @@ class HttpServerRequest(private val _asJava: Object) extends ReadStream[io.vertx
    */
   def isEnded (): Boolean = {
     asJava.asInstanceOf[JHttpServerRequest].isEnded().asInstanceOf[Boolean]
+  }
+
+  /**
+   * Get the cookie with the specified name.   * @param name the cookie name
+   * @return the cookie
+   */
+  def getCookie (name: String): scala.Option[Cookie] = {
+    scala.Option(asJava.asInstanceOf[JHttpServerRequest].getCookie(name.asInstanceOf[java.lang.String])).map(Cookie(_))
+  }
+
+  /**
+   * @return the number of cookieMap.
+   */
+  def cookieCount (): Int = {
+    asJava.asInstanceOf[JHttpServerRequest].cookieCount().asInstanceOf[Int]
   }
 
 

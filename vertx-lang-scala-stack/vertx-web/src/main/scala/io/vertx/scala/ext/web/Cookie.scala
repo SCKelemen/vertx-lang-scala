@@ -18,6 +18,7 @@ package io.vertx.scala.ext.web
 
 import io.vertx.ext.web.{Cookie => JCookie}
 import scala.reflect.runtime.universe._
+import io.vertx.scala.core.http.{Cookie => SCookie}
 import io.vertx.lang.scala.HandlerOps._
 import io.vertx.lang.scala.Converter._
 
@@ -27,76 +28,50 @@ import io.vertx.lang.scala.Converter._
   * All cookies must have a name and a value and can optionally have other fields set such as path, domain, etc.
   * 
   * (Derived from io.netty.handler.codec.http.Cookie)
-
   */
 
-class Cookie(private val _asJava: Object) {
-  def asJava = _asJava
+class Cookie(private val _asJava: Object) extends SCookie (_asJava) {
 
 
 
-  /**
-   * Sets the value of this cookie   * @param value The value to set
-   * @return a reference to this, so the API can be used fluently
-   */
-  
+
+
+  override 
   def setValue(value: String): Cookie = {
     asJava.asInstanceOf[JCookie].setValue(value.asInstanceOf[java.lang.String])
     this
   }
 
-  /**
-   * Sets the domain of this cookie   * @param domain The domain to use
-   * @return a reference to this, so the API can be used fluently
-   */
-  
+
+  override 
   def setDomain(domain: scala.Option[String]): Cookie = {
     asJava.asInstanceOf[JCookie].setDomain(domain.map(x => x.asInstanceOf[java.lang.String]).orNull)
     this
   }
 
-  /**
-   * Sets the path of this cookie.   * @param path The path to use for this cookie
-   * @return a reference to this, so the API can be used fluently
-   */
-  
+
+  override 
   def setPath(path: scala.Option[String]): Cookie = {
     asJava.asInstanceOf[JCookie].setPath(path.map(x => x.asInstanceOf[java.lang.String]).orNull)
     this
   }
 
-  /**
-   * Sets the maximum age of this cookie in seconds.
-   * If an age of `0` is specified, this cookie will be
-   * automatically removed by browser because it will expire immediately.
-   * If MIN_VALUE is specified, this cookie will be removed when the
-   * browser is closed.
-   * If you don't set this the cookie will be a session cookie and be removed when the browser is closed.   * @param maxAge The maximum age of this cookie in seconds
-   */
-  
+
+  override 
   def setMaxAge(maxAge: Long): Cookie = {
     asJava.asInstanceOf[JCookie].setMaxAge(maxAge.asInstanceOf[java.lang.Long])
     this
   }
 
-  /**
-   * Sets the security getStatus of this cookie   * @param secure True if this cookie is to be secure, otherwise false
-   * @return a reference to this, so the API can be used fluently
-   */
-  
+
+  override 
   def setSecure(secure: Boolean): Cookie = {
     asJava.asInstanceOf[JCookie].setSecure(secure.asInstanceOf[java.lang.Boolean])
     this
   }
 
-  /**
-   * Determines if this cookie is HTTP only.
-   * If set to true, this cookie cannot be accessed by a client
-   * side script. However, this works only if the browser supports it.
-   * For for information, please look
-   * <a href="http://www.owasp.org/index.php/HTTPOnly">here</a>.   * @param httpOnly True if the cookie is HTTP only, otherwise false.
-   */
-  
+
+  override 
   def setHttpOnly(httpOnly: Boolean): Cookie = {
     asJava.asInstanceOf[JCookie].setHttpOnly(httpOnly.asInstanceOf[java.lang.Boolean])
     this
@@ -105,42 +80,7 @@ class Cookie(private val _asJava: Object) {
 
 
   /**
-   * @return the name of this cookie
-   */
-  def getName (): String = {
-    asJava.asInstanceOf[JCookie].getName().asInstanceOf[String]
-  }
-
-  /**
-   * @return the value of this cookie
-   */
-  def getValue (): String = {
-    asJava.asInstanceOf[JCookie].getValue().asInstanceOf[String]
-  }
-
-  /**
-   * @return the domain for the cookie
-   */
-  def getDomain (): scala.Option[String] = {
-    scala.Option(asJava.asInstanceOf[JCookie].getDomain().asInstanceOf[String])
-  }
-
-  /**
-   * @return the path for this cookie
-   */
-  def getPath (): scala.Option[String] = {
-    scala.Option(asJava.asInstanceOf[JCookie].getPath().asInstanceOf[String])
-  }
-
-  /**
-   * Encode the cookie to a string. This is what is used in the Set-Cookie header   * @return the encoded cookie
-   */
-  def encode (): String = {
-    asJava.asInstanceOf[JCookie].encode().asInstanceOf[String]
-  }
-
-  /**
-   * Has the cookie been changed? Changed cookies will be saved out in the response and sent to the browser.   * @return true if changed
+   * Has the cookie been changed? Changed cookieMap will be saved out in the response and sent to the browser.   * @return true if changed
    */
   def isChanged (): Boolean = {
     asJava.asInstanceOf[JCookie].isChanged().asInstanceOf[Boolean]

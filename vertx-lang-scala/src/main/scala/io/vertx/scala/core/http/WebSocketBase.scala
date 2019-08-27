@@ -102,6 +102,12 @@ def textHandlerID ( ): String    /**
    * handshake will not be completed yet.
    */
 def subProtocol ( ): String    /**
+   * Returns the status code received when the WebSocket was closed by the other side, otherwise `null`.
+   */
+def closeStatusCode ( ): Short    /**
+   * Returns the reason message received when the WebSocket was closed by the other side, otherwise `null`.
+   */
+def closeReason ( ): String    /**
    * Write a WebSocket frame to the connection   * @param frame the frame to write
    * @return a reference to this, so the API can be used fluently
    */
@@ -162,7 +168,8 @@ def writePing ( data: io.vertx.core.buffer.Buffer): WebSocketBase    /**
 def writePong ( data: io.vertx.core.buffer.Buffer): WebSocketBase    /**
    * Set a close handler. This will be called when the WebSocket is closed.
    * <p/>
-   * After this callback, no more messages are expected.   * @param handler the handler
+   * After this callback, no more messages are expected. When the WebSocket received a close frame, the
+   * [[io.vertx.scala.core.http.WebSocketBase#closeStatusCode]] will return the status code and [[io.vertx.scala.core.http.WebSocketBase#closeReason]] will return the reason.   * @param handler the handler
    * @return a reference to this, so the API can be used fluently
    */
 def closeHandler ( handler: Handler[Unit]): WebSocketBase    /**
@@ -510,7 +517,8 @@ object WebSocketBase {
   /**
    * Set a close handler. This will be called when the WebSocket is closed.
    * <p/>
-   * After this callback, no more messages are expected.   * @param handler the handler
+   * After this callback, no more messages are expected. When the WebSocket received a close frame, the
+   * [[io.vertx.scala.core.http.WebSocketBase#closeStatusCode]] will return the status code and [[io.vertx.scala.core.http.WebSocketBase#closeReason]] will return the reason.   * @param handler the handler
    * @return a reference to this, so the API can be used fluently
    */
   
@@ -653,6 +661,20 @@ object WebSocketBase {
    */
   def subProtocol (): String = {
     asJava.asInstanceOf[JWebSocketBase].subProtocol().asInstanceOf[String]
+  }
+
+  /**
+   * Returns the status code received when the WebSocket was closed by the other side, otherwise `null`.
+   */
+  def closeStatusCode (): Short = {
+    asJava.asInstanceOf[JWebSocketBase].closeStatusCode().asInstanceOf[Short]
+  }
+
+  /**
+   * Returns the reason message received when the WebSocket was closed by the other side, otherwise `null`.
+   */
+  def closeReason (): String = {
+    asJava.asInstanceOf[JWebSocketBase].closeReason().asInstanceOf[String]
   }
 
   /**

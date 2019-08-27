@@ -38,9 +38,6 @@ import io.vertx.lang.scala.Converter._
   * 
   * The session is available on the routing context with
   * .
-  * 
-  * The session handler requires a [[io.vertx.scala.ext.web.handler.CookieHandler]] to be on the routing
-  * chain before it.
   */
 
 class SessionHandler(private val _asJava: Object) extends io.vertx.core.Handler[RoutingContext] {

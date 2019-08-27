@@ -166,6 +166,16 @@ class CLI(private val _asJava: Object) {
     this
   }
 
+  /**
+   * Sets the priority of the CLI.   * @param priority the priority
+   * @return the current CLI instance
+   */
+  
+  def setPriority(priority: Int): CLI = {
+    asJava.asInstanceOf[JCLI].setPriority(priority.asInstanceOf[java.lang.Integer])
+    this
+  }
+
 
 
   /**
@@ -249,6 +259,13 @@ class CLI(private val _asJava: Object) {
    */
   def getArgument (index: Int): scala.Option[Argument] = {
     scala.Option(asJava.asInstanceOf[JCLI].getArgument(index.asInstanceOf[java.lang.Integer])).map(Argument(_))
+  }
+
+  /**
+   * @return the CLI priority.
+   */
+  def getPriority (): Int = {
+    asJava.asInstanceOf[JCLI].getPriority().asInstanceOf[Int]
   }
 
 

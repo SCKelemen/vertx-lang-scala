@@ -19,7 +19,7 @@ class ${className}${typeHelper.assembleTypeParams(typeParams, true)}(private val
 trait ${className}${typeHelper.assembleTypeParams(typeParams, false)}
 </#if>
 <#if superTypes?has_content >
-      extends <#list classes as superType><#if type.name == "io.vertx.ext.web.templ.TemplateEngine">S</#if>${typeHelper.toScalaType(superType, false)} <#if superType.raw.isConcrete()>(_asJava)</#if><#sep>with </#list>
+      extends <#list classes as superType><#if type.name == "io.vertx.ext.web.templ.TemplateEngine">S</#if><#if type.name == "io.vertx.ext.web.Cookie">S</#if>${typeHelper.toScalaType(superType, false)} <#if superType.raw.isConcrete()>(_asJava)</#if><#sep>with </#list>
    <#if classes?has_content && abstractClasses?has_content>with </#if><#list abstractClasses as superType>${typeHelper.toScalaType(superType, false)}<#if superType.raw.concrete>(_asJava)</#if><#sep>with </#list>
    <#if type.handler>
       with io.vertx.core.Handler[${typeHelper.toScalaType(type.handlerArg, false)}]
